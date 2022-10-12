@@ -159,6 +159,7 @@ class PresidentGame:
     def __init__(self, nb_players: int = random.randint(3,4)):
         self.__generate_players(nb_players)
         self.__generate_cards()
+        self.distribute_cards()
         self.round = 0
 
     def __generate_players(self, nb_players: int):

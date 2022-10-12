@@ -11,7 +11,7 @@ class TestCardsExercice2(unittest.TestCase):
         self.assertFalse(player_incognito.name == '')
 
     def test_default_game_has_three_players(self):
-        game = models.PresidentGame()
+        game = models.PresidentGame(3)
         self.assertTrue(len(game.players) == 3)
 
     def test_game_launch_distributes_cards(self):
