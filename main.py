@@ -34,6 +34,7 @@ def game_loop(g: PresidentGame):
         for ai in g.ai_players:
             plays = ai.play(choice, nb_cards)
             print(f"{ai.name} plays \t {plays}")
+            ai.remove_from_hand(plays)
 
             # Update latest card played
             if len(plays) > 0:
