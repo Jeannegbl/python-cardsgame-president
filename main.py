@@ -14,7 +14,7 @@ def game_loop(g: PresidentGame):
     """
 
     for i in range(len(g.players)):
-        print(g.players[i].name, ":", len(g.players[i].hand))
+        print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
 
     wanna_continue = True
     while wanna_continue:
