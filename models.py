@@ -151,15 +151,40 @@ class AIPlayer(Player):
         for index, card in enumerate(self.hand):
             if choice == "V":
                 comparatif = 11
+                if best_choice is None and card.value >= comparatif and \
+                        self.has_symbol(card.symbol) >= \
+                        nb_cards:
+                    cards_played = self._hand[index:index+nb_cards]
+                    best_choice = card.symbol
             elif choice == "D":
                 comparatif = 12
+                if best_choice is None and card.value >= comparatif and \
+                        self.has_symbol(card.symbol) >= \
+                        nb_cards:
+                    cards_played = self._hand[index:index+nb_cards]
+                    best_choice = card.symbol
             elif choice == "R":
                 comparatif = 13
+                if best_choice is None and card.value >= comparatif and \
+                        self.has_symbol(card.symbol) >= \
+                        nb_cards:
+                    cards_played = self._hand[index:index+nb_cards]
+                    best_choice = card.symbol
             elif choice == "A":
                 comparatif = 14
+                if best_choice is None and card.value >= comparatif and \
+                        self.has_symbol(card.symbol) >= \
+                        nb_cards:
+                    cards_played = self._hand[index:index+nb_cards]
+                    best_choice = card.symbol
             elif choice == "2":
                 comparatif = 15
-            if best_choice is None and card.value >= comparatif and \
+                if best_choice is None and card.value >= comparatif and \
+                        self.has_symbol(card.symbol) >= \
+                        nb_cards:
+                    cards_played = self._hand[index:index+nb_cards]
+                    best_choice = card.symbol
+            elif best_choice is None and card.symbol >= comparatif and \
                     self.has_symbol(card.symbol) >= \
                     nb_cards:
                 cards_played = self._hand[index:index+nb_cards]
