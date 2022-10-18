@@ -147,8 +147,19 @@ class AIPlayer(Player):
 
         """
         best_choice = None
+        comparatif = choice
         for index, card in enumerate(self.hand):
-            if best_choice is None and card.symbol >= choice and \
+            if choice == "V":
+                comparatif = 11
+            elif choice == "D":
+                comparatif = 12
+            elif choice == "R":
+                comparatif = 13
+            elif choice == "A":
+                comparatif = 14
+            elif choice == "2":
+                comparatif = 15
+            if best_choice is None and card.value >= comparatif and \
                     self.has_symbol(card.symbol) >= \
                     nb_cards:
                 cards_played = self._hand[index:index+nb_cards]
