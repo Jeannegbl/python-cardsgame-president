@@ -90,7 +90,6 @@ class Player:
         self._name: str = player_name if player_name is not None else \
             names.get_first_name()
         self._hand: list = []
-        print(self)
 
 
     def add_to_hand(self, card: Card):

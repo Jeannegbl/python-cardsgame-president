@@ -12,6 +12,10 @@ def game_loop(g: PresidentGame):
     Args:
         g: The President Game instance.
     """
+
+    for i in range(len(g.players)):
+        print(g.players[i].name, ":", len(g.players[i].hand))
+
     wanna_continue = True
     while wanna_continue:
 
