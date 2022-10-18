@@ -147,48 +147,40 @@ class AIPlayer(Player):
 
         """
         best_choice = None
-        comparatif = choice
         for index, card in enumerate(self.hand):
+            if choice == "3":
+                comparatif = 3
+            if choice == "4":
+                comparatif = 4
+            if choice == "5":
+                comparatif = 5
+            if choice == "6":
+                comparatif = 6
+            if choice == "7":
+                comparatif = 7
+            if choice == "8":
+                comparatif = 8
+            if choice == "9":
+                comparatif = 9
+            if choice == "10":
+                comparatif = 10
             if choice == "V":
                 comparatif = 11
-                if best_choice is None and card.value >= comparatif and \
-                        self.has_symbol(card.symbol) >= \
-                        nb_cards:
-                    cards_played = self._hand[index:index+nb_cards]
-                    best_choice = card.symbol
-            elif choice == "D":
+            if choice == "D":
                 comparatif = 12
-                if best_choice is None and card.value >= comparatif and \
-                        self.has_symbol(card.symbol) >= \
-                        nb_cards:
-                    cards_played = self._hand[index:index+nb_cards]
-                    best_choice = card.symbol
-            elif choice == "R":
+            if choice == "R":
                 comparatif = 13
-                if best_choice is None and card.value >= comparatif and \
-                        self.has_symbol(card.symbol) >= \
-                        nb_cards:
-                    cards_played = self._hand[index:index+nb_cards]
-                    best_choice = card.symbol
-            elif choice == "A":
+            if choice == "A":
                 comparatif = 14
-                if best_choice is None and card.value >= comparatif and \
-                        self.has_symbol(card.symbol) >= \
-                        nb_cards:
-                    cards_played = self._hand[index:index+nb_cards]
-                    best_choice = card.symbol
-            elif choice == "2":
+            if choice == "2":
                 comparatif = 15
-                if best_choice is None and card.value >= comparatif and \
-                        self.has_symbol(card.symbol) >= \
-                        nb_cards:
-                    cards_played = self._hand[index:index+nb_cards]
-                    best_choice = card.symbol
-            elif best_choice is None and card.symbol >= comparatif and \
+
+            if best_choice is None and card.value >= comparatif and \
                     self.has_symbol(card.symbol) >= \
                     nb_cards:
-                cards_played = self._hand[index:index+nb_cards]
+                cards_played = self._hand[index:index + nb_cards]
                 best_choice = card.symbol
+
         return cards_played if best_choice is not None else []
 
 
