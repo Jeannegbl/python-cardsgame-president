@@ -44,10 +44,10 @@ def game_loop(g: PresidentGame):
             if len(g.players[i].hand) == 0:
                 if i == 0:
                     print("Vous avez gagné !!")
-                    wanna_continue = input("Fin de la partie ! Appuyer sur entrée")
+                    return
                 else:
                     print("Le joueur", g.players[i].name, "a gagné !!")
-                    wanna_continue = input("Fin de la partie ! Appuyer sur entrée")
+                    return
 
         wanna_continue = input('Do you want to continue playing (y/N)? ')
         wanna_continue = (wanna_continue == 'Y' or wanna_continue == 'y')

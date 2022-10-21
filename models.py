@@ -87,8 +87,7 @@ class Card:
 
 class Player:
     def __init__(self, player_name=None):
-        self._name: str = player_name if player_name is not None else \
-            names.get_first_name()
+        self._name: str = player_name if player_name is not None else "You"
         self._hand: list = []
 
 
@@ -135,6 +134,12 @@ class Player:
 
 
 class AIPlayer(Player):
+
+    def __init__(self, player_name=None):
+        self._name: str = player_name if player_name is not None else \
+            names.get_first_name()
+        self._hand: list = []
+
     def play(self, choice, nb_cards: int) -> list:
         """
         Play a card correspondig to what has been played on the table.
