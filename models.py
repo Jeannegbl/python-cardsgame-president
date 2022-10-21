@@ -184,6 +184,7 @@ class AIPlayer(Player):
                     self.has_symbol(card.symbol) >= \
                     nb_cards:
                 cards_played = self._hand[index:index + nb_cards]
+                self.card_valeur = card.value
                 best_choice = card.symbol
 
         return cards_played if best_choice is not None else []
