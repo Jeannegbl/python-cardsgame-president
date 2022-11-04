@@ -42,9 +42,7 @@ def game_loop(g: PresidentGame):
                 if len(plays) > 0:
                     choice = plays[0].symbol
                     last_player = ai.name
-                ai.remove_from_hand(plays)
                 break
-            ai.remove_from_hand(plays)
 
             # Update latest card played
             if len(plays) > 0:

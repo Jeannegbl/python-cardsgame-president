@@ -1,3 +1,4 @@
+import random
 import unittest
 import models
 
@@ -22,6 +23,14 @@ class TestCardsExercice2(unittest.TestCase):
         print(player_1.hand)
         self.assertTrue(len(player_1.hand) > 0)
         self.assertTrue(len(player_1.hand) >= len(player_2.hand))
+
+    def test_game_remove_ai_cards(self):
+        game = models.PresidentGame()
+        player_2 = game.players[1]
+        longueur = len(player_2.hand)
+        player_2.play("5",1)
+        self.assertTrue(longueur > len(player_2.hand))
+
 
 if __name__ == '__main__':
     unittest.main()
