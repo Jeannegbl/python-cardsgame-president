@@ -28,15 +28,18 @@ def game_loop(g: PresidentGame):
             choice = input('What value do you wish to play ? ')
 
         plays = g.main_player.play(choice)
-        print(f"You play {plays}")
 
+        print(f"You play {plays}")
         nb_cards = len(plays)
+        best_card = choice
         for ai in g.ai_players:
             if plays != [] and (choice == "2" or nb_cards == 4):
                 break
             plays = ai.play(choice, nb_cards)
             print(f"{ai.name} plays \t {plays}")
             if plays != [] and (ai.card_valeur == 15 or nb_cards == 4):
+                if len(plays) > 0:
+                    choice = plays[0].symbol
                 ai.remove_from_hand(plays)
                 break
             ai.remove_from_hand(plays)
@@ -44,6 +47,7 @@ def game_loop(g: PresidentGame):
             # Update latest card played
             if len(plays) > 0:
                 choice = plays[0].symbol
+        print(choice)
 
         for i in range(len(g.players)):
             if len(g.players[i].hand) == 0:
