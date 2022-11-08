@@ -89,7 +89,7 @@ class Player:
     def __init__(self, player_name=None):
         self._name: str = player_name if player_name is not None else "You"
         self._hand: list = []
-
+        self._ordre = 0
 
     def add_to_hand(self, card: Card):
         self._hand.append(card)
@@ -151,34 +151,38 @@ class AIPlayer(Player):
         Returns: An array of cards to play.
 
         """
+        if choice == "":
+            choice = "3"
         best_choice = None
         for index, card in enumerate(self.hand):
             if choice == "3":
                 comparatif = 3
-            if choice == "4":
+            elif choice == "4":
                 comparatif = 4
-            if choice == "5":
+            elif choice == "5":
                 comparatif = 5
-            if choice == "6":
+            elif choice == "6":
                 comparatif = 6
-            if choice == "7":
+            elif choice == "7":
                 comparatif = 7
-            if choice == "8":
+            elif choice == "8":
                 comparatif = 8
-            if choice == "9":
+            elif choice == "9":
                 comparatif = 9
-            if choice == "10":
+            elif choice == "10":
                 comparatif = 10
-            if choice == "V":
+            elif choice == "V":
                 comparatif = 11
-            if choice == "D":
+            elif choice == "D":
                 comparatif = 12
-            if choice == "R":
+            elif choice == "R":
                 comparatif = 13
-            if choice == "A":
+            elif choice == "A":
                 comparatif = 14
-            if choice == "2":
+            elif choice == "2":
                 comparatif = 15
+            else:
+                comparatif = choice
 
             if best_choice is None and card.value >= comparatif and \
                     self.has_symbol(card.symbol) >= \
@@ -192,11 +196,10 @@ class AIPlayer(Player):
 
 
 class PresidentGame:
-    def __init__(self, nb_players: int = random.randint(3,4)):
+    def __init__(self, nb_players: int = 4):
         self.__generate_players(nb_players)
         self.__generate_cards()
         self.distribute_cards()
-        self.round = 0
 
     def __generate_players(self, nb_players: int):
         self.__players = [Player()]
