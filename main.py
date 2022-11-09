@@ -60,27 +60,22 @@ def game_loop(g: PresidentGame):
 
         if tour == len(g.players) - 1:
             print(f"Le tour est fini : {last_player} commence le tour")
-            if last_player == "You":
-                for i in range(len(g.players)):
-                    g.players[i].ordre = i
-                    print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
-            else:
-                for i in range(len(g.players)):
-                    if last_player == g.players[i].name:
-                        after_last_player = i+1
-                        after_after_last_player = i+2
-                        g.players[i].ordre = 0
-                        if i+1 > 3:
-                            after_last_player = 0
-                        g.players[after_last_player].ordre = 1
-                        if i+2 == 4:
-                            after_after_last_player = 0
-                        if i+2 == 5:
-                            after_after_last_player = 1
-                        g.players[after_after_last_player].ordre = 2
-                        g.players[i-1].ordre = 3
-                        for i in range(len(g.players)):
-                            print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
+            for i in range(len(g.players)):
+                if last_player == g.players[i].name:
+                    after_last_player = i+1
+                    after_after_last_player = i+2
+                    g.players[i].ordre = 0
+                    if i+1 > 3:
+                        after_last_player = 0
+                    g.players[after_last_player].ordre = 1
+                    if i+2 == 4:
+                        after_after_last_player = 0
+                    if i+2 == 5:
+                        after_after_last_player = 1
+                    g.players[after_after_last_player].ordre = 2
+                    g.players[i-1].ordre = 3
+                    for i in range(len(g.players)):
+                        print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
 
             tour = 0
             choice = ""
