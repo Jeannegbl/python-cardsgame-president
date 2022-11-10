@@ -18,6 +18,10 @@ def game_loop(g: PresidentGame):
 
     wanna_continue = True
     while wanna_continue:
+        choix = ""
+        choice = "3"
+        nb_cards = 0
+        last_player = "You"
         while tour < len(g.players) - 1:
             for i in range(len(g.players)):
                 print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
@@ -25,18 +29,35 @@ def game_loop(g: PresidentGame):
             print('Your current deck is : ')
             print(g.main_player.hand, )
             print_ln()
-            choice = '0'
-            last_player = "You"
 
-            while g.main_player.has_symbol(choice) == 0:
-                choice = input('What value do you wish to play ? ')
+            choix = input('What value do you wish to play ? ')
 
-            plays = g.main_player.play(choice)
+            while choix < choice:
+                if choix == "0" or choix == "10" or choix == "2" or nb_cards == 0:
+                    break
+                choix = input('What value do you wish to play ? ')
+
+
+            if choix == "0":
+                plays = g.main_player.play([])
+                tour = tour + 1
+            else:
+                choice = choix
+                plays = g.main_player.play(choice)
+                tour = 0
+                last_player = "You"
 
             print(f"You play {plays}")
-            nb_cards = len(plays)
-            best_card = choice
+            if len(plays) == 0 and nb_cards == 0:
+                nb_cards = 1
+            elif len(plays) == 0 and nb_cards > 0:
+                nb_cards = nb_cards
+            else:
+                nb_cards = len(plays)
+
             for ai in g.ai_players:
+                if tour == len(g.players) - 1:
+                    break
                 if plays != [] and (choice == "2" or nb_cards == 4):
                     tour = len(g.players) - 1
                     break
@@ -78,18 +99,41 @@ def game_loop(g: PresidentGame):
                         print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
 
             tour = 0
-            choice = ""
-            nb_cards = len(plays)
+            choix = ""
+            choice = "3"
+            nb_cards = 1
+            last_player = "You"
             while tour < len(g.players) - 1:
                 for i in range(len(g.players)):
+                    if tour == len(g.players) - 1:
+                        break
                     if g.players[i].ordre == 0:
                         if i == 0:
                             print('Your current deck is : ')
                             print(g.main_player.hand, )
-                            choice = input('What value do you wish to play ? ')
-                            plays = g.main_player.play(choice)
-                            nb_cards = len(plays)
+                            choix = input('What value do you wish to play ? ')
+
+                            while choix < choice:
+                                if choix == "0" or choix == "10" or choix == "2":
+                                    break
+                                choix = input('What value do you wish to play ? ')
+
+                            if choix == "0":
+                                plays = g.main_player.play([])
+                                tour = tour + 1
+                            else:
+                                choice = choix
+                                plays = g.main_player.play(choice)
+                                tour = 0
+                                last_player = "You"
+
                             print(f"You play {plays}")
+                            if len(plays) == 0 and nb_cards == 0:
+                                nb_cards = 1
+                            elif len(plays) == 0 and nb_cards > 0:
+                                nb_cards = nb_cards
+                            else:
+                                nb_cards = len(plays)
                         else:
                             if plays != [] and (choice == "2" or nb_cards == 4):
                                 tour = len(g.players) - 1
@@ -107,17 +151,39 @@ def game_loop(g: PresidentGame):
                                 tour = tour + 1
                             if plays != []:
                                 tour = 0
+                                last_player = g.players[i].name
                             if len(plays) > 0:
                                 choice = plays[0].symbol
                         for j in range(len(g.players)):
+                            if tour == len(g.players) - 1:
+                                break
                             if g.players[j].ordre == 1:
                                 if j == 0:
                                     print('Your current deck is : ')
                                     print(g.main_player.hand, )
-                                    choice = input('What value do you wish to play ? ')
-                                    plays = g.main_player.play(choice)
-                                    nb_cards = len(plays)
+                                    choix = input('What value do you wish to play ? ')
+
+                                    while choix < choice:
+                                        if choix == "0" or choix == "10" or choix == "2":
+                                            break
+                                        choix = input('What value do you wish to play ? ')
+
+                                    if choix == "0":
+                                        plays = g.main_player.play([])
+                                        tour = tour + 1
+                                    else:
+                                        choice = choix
+                                        plays = g.main_player.play(choice)
+                                        tour = 0
+                                        last_player = "You"
+
                                     print(f"You play {plays}")
+                                    if len(plays) == 0 and nb_cards == 0:
+                                        nb_cards = 1
+                                    elif len(plays) == 0 and nb_cards > 0:
+                                        nb_cards = nb_cards
+                                    else:
+                                        nb_cards = len(plays)
                                 else:
                                     if plays != [] and (choice == "2" or nb_cards == 4):
                                         tour = len(g.players) - 1
@@ -135,17 +201,39 @@ def game_loop(g: PresidentGame):
                                         tour = tour + 1
                                     if plays != []:
                                         tour = 0
+                                        last_player = g.players[j].name
                                     if len(plays) > 0:
                                         choice = plays[0].symbol
                                 for k in range(len(g.players)):
+                                    if tour == len(g.players) - 1:
+                                        break
                                     if g.players[k].ordre == 2:
                                         if k == 0:
                                             print('Your current deck is : ')
                                             print(g.main_player.hand, )
-                                            choice = input('What value do you wish to play ? ')
-                                            plays = g.main_player.play(choice)
-                                            nb_cards = len(plays)
+                                            choix = input('What value do you wish to play ? ')
+
+                                            while choix < choice:
+                                                if choix == "0" or choix == "10" or choix == "2":
+                                                    break
+                                                choix = input('What value do you wish to play ? ')
+
+                                            if choix == "0":
+                                                plays = g.main_player.play([])
+                                                tour = tour + 1
+                                            else:
+                                                choice = choix
+                                                plays = g.main_player.play(choice)
+                                                tour = 0
+                                                last_player = "You"
+
                                             print(f"You play {plays}")
+                                            if len(plays) == 0 and nb_cards == 0:
+                                                nb_cards = 1
+                                            elif len(plays) == 0 and nb_cards > 0:
+                                                nb_cards = nb_cards
+                                            else:
+                                                nb_cards = len(plays)
                                         else:
                                             if plays != [] and (choice == "2" or nb_cards == 4):
                                                 tour = len(g.players) - 1
@@ -163,17 +251,39 @@ def game_loop(g: PresidentGame):
                                                 tour = tour + 1
                                             if plays != []:
                                                 tour = 0
+                                                last_player = g.players[k].name
                                             if len(plays) > 0:
                                                 choice = plays[0].symbol
                                         for l in range(len(g.players)):
+                                            if tour == len(g.players) - 1:
+                                                break
                                             if g.players[l].ordre == 3:
                                                 if l == 0:
                                                     print('Your current deck is : ')
                                                     print(g.main_player.hand, )
-                                                    choice = input('What value do you wish to play ? ')
-                                                    plays = g.main_player.play(choice)
-                                                    nb_cards = len(plays)
+                                                    choix = input('What value do you wish to play ? ')
+
+                                                    while choix < choice:
+                                                        if choix == "0" or choix == "10" or choix == "2":
+                                                            break
+                                                        choix = input('What value do you wish to play ? ')
+
+                                                    if choix == "0":
+                                                        plays = g.main_player.play([])
+                                                        tour = tour + 1
+                                                    else:
+                                                        choice = choix
+                                                        plays = g.main_player.play(choice)
+                                                        tour = 0
+                                                        last_player = "You"
+
                                                     print(f"You play {plays}")
+                                                    if len(plays) == 0 and nb_cards == 0:
+                                                        nb_cards = 1
+                                                    elif len(plays) == 0 and nb_cards > 0:
+                                                        nb_cards = nb_cards
+                                                    else:
+                                                        nb_cards = len(plays)
                                                 else:
                                                     if plays != [] and (choice == "2" or nb_cards == 4):
                                                         tour = len(g.players) - 1
@@ -191,6 +301,7 @@ def game_loop(g: PresidentGame):
                                                         tour = tour + 1
                                                     if plays != []:
                                                         tour = 0
+                                                        last_player = g.players[l].name
                                                     if len(plays) > 0:
                                                         choice = plays[0].symbol
                     if len(g.players[i].hand) == 0:
@@ -221,7 +332,7 @@ def game_loop(g: PresidentGame):
                                     print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
                                 tour = 0
                                 choice = ""
-                                nb_cards = len(plays)
+                                nb_cards = 1
                         break
 
 
