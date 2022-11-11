@@ -90,6 +90,8 @@ class Player:
         self._name: str = player_name if player_name is not None else "You"
         self._hand: list = []
         self._ordre = 0
+        self._finish = 0
+        self._role = ""
 
     def add_to_hand(self, card: Card):
         self._hand.append(card)
