@@ -1,3 +1,4 @@
+import models
 from models import PresidentGame
 
 
@@ -16,18 +17,41 @@ def game_loop(g: PresidentGame):
         g.players[i].ordre = i
         g.players[i].finish = 0
         g.players[i].role = ""
+    last_player = "You"
 
     wanna_continue = True
     while wanna_continue:
+        for i in range(len(g.players)):
+            if g.players[i].role == "Président":
+                president = g.players[i]
+            if g.players[i].role == "Trouduc":
+                trouduc = g.players[i]
+        for i in range(len(g.players)):
+            if g.players[i].role == "Président":
+                #random_card = input("Donner une carte au Trouduc")
+                random_card = g.players[i].hand[0]
+                g.players[i].give(random_card, trouduc)
+            if g.players[i].role == "Trouduc":
+                last_card = g.players[i].hand[-1]
+                g.players[i].give(last_card, president)
+
+
         tour = 0
         choice = "3"
         nb_cards = 1
-        last_player = "You"
+        compteur_fini = 0
+        stop = 0
         for i in range(len(g.players)):
             print(g.players[i].name, ":", len(g.players[i].hand), "cartes")
+            g.players[i].role = ""
+            g.players[i].finish = 0
 
         while tour < len(g.players) - 1:
+            if stop == 1:
+                break
             for i in range(len(g.players)):
+                if stop == 1:
+                    break
                 choix = ""
                 if tour == len(g.players) - 1:
                     break
@@ -298,10 +322,29 @@ def game_loop(g: PresidentGame):
                         for j in range(len(g.players)):
                             if g.players[j].finish == 0:
                                 g.players[j].role = "Trouduc"
+                                last_player = g.players[j].name
                             if g.players[j].role == "":
                                 g.players[j].role = "Neutre"
                             print(g.players[j].name, ":", g.players[j].role)
-                        return
+                        stop = 1
+                        for i in range(len(g.players)):
+                            g.players[i].start_hand
+                            if last_player == g.players[i].name:
+                                after_last_player = i + 1
+                                after_after_last_player = i + 2
+                                g.players[i].ordre = 0
+                                if i + 1 > 3:
+                                    after_last_player = 0
+                                g.players[after_last_player].ordre = 1
+                                if i + 2 == 4:
+                                    after_after_last_player = 0
+                                if i + 2 == 5:
+                                    after_after_last_player = 1
+                                g.players[after_after_last_player].ordre = 2
+                                g.players[i - 1].ordre = 3
+                        g.generate_cards()
+                        g.distribute_cards()
+                        break
 
                 if tour == len(g.players) - 1:
                     print(f"Le tour est fini : {last_player} commence le tour")

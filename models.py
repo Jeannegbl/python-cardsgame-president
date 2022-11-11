@@ -101,6 +101,20 @@ class Player:
         for c in cards:
             self._hand.remove(c)
 
+    def give(self, card ,other_player):
+        give_card = other_player.add_to_hand(card)
+        return give_card
+
+    def give_president(self, cards ,other_player):
+        give_card = other_player.add_to_hand(cards)
+        give = [give_card for card in self._hand if card.symbol ==
+                        cards]
+        return other_player.add_to_hand(give)
+
+    @property
+    def start_hand(self):
+        self._hand = []
+
     @property
     def hand(self):
         return self._hand
@@ -200,7 +214,7 @@ class AIPlayer(Player):
 class PresidentGame:
     def __init__(self, nb_players: int = 4):
         self.__generate_players(nb_players)
-        self.__generate_cards()
+        self.generate_cards()
         self.distribute_cards()
 
     def __generate_players(self, nb_players: int):
@@ -208,7 +222,7 @@ class PresidentGame:
         for _ in range(nb_players-1):
             self.__players.append(AIPlayer())
 
-    def __generate_cards(self):
+    def generate_cards(self):
         self.__deck = Deck()
         self.__deck.shuffle()
 
