@@ -71,15 +71,18 @@ def game_loop(g: PresidentGame):
                             print('Your current deck is : ')
                             print(g.main_player.hand, )
                             choix = input('What value do you wish to play ? (0 for nothing)')
-                            if choix == "V" and (choice == "D" or choice == "R" or choice == "A"):
-                                choix = input('What value do you wish to play ? (0 for nothing)')
-                            if choix == "D" and choice == "A":
-                                choix = input('What value do you wish to play ? (0 for nothing)')
-                            if choix == "R" and choice == "A":
-                                choix = input('What value do you wish to play ? (0 for nothing)')
-                            if choice == "10" and (
-                                    choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
-                                choix = input('What value do you wish to play ? (0 for nothing)')
+                            while choix > choice:
+                                if choix == "V" and (choice == "D" or choice == "R" or choice == "A"):
+                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                elif choix == "D" and choice == "A":
+                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                elif choix == "R" and choice == "A":
+                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                elif choice == "10" and (
+                                        choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
+                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                else:
+                                    break
                             while choix < choice:
                                 if choice == "V" and (choix == "D" or choix == "R" or choix == "A"):
                                     break
@@ -87,7 +90,7 @@ def game_loop(g: PresidentGame):
                                     break
                                 elif choice == "R" and choix == "A":
                                     break
-                                elif choix == "0" or choix == "10" or choix == "2":
+                                elif choix == "0" or choix == "2":
                                     break
                                 choix = input('What value do you wish to play ? (0 for nothing)')
                             if choix == "0":
@@ -150,15 +153,18 @@ def game_loop(g: PresidentGame):
                                     print('Your current deck is : ')
                                     print(g.main_player.hand, )
                                     choix = input('What value do you wish to play ? (0 for nothing)')
-                                    if choix == "V" and (choice == "D" or choice == "R" or choice == "A"):
-                                        choix = input('What value do you wish to play ? (0 for nothing)')
-                                    if choix == "D" and choice == "A":
-                                        choix = input('What value do you wish to play ? (0 for nothing)')
-                                    if choix == "R" and choice == "A":
-                                        choix = input('What value do you wish to play ? (0 for nothing)')
-                                    if choice == "10" and (
-                                            choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
-                                        choix = input('What value do you wish to play ? (0 for nothing)')
+                                    while choix > choice:
+                                        if choix == "V" and (choice == "D" or choice == "R" or choice == "A"):
+                                            choix = input('What value do you wish to play ? (0 for nothing)')
+                                        elif choix == "D" and choice == "A":
+                                            choix = input('What value do you wish to play ? (0 for nothing)')
+                                        elif choix == "R" and choice == "A":
+                                            choix = input('What value do you wish to play ? (0 for nothing)')
+                                        elif choice == "10" and (
+                                                choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
+                                            choix = input('What value do you wish to play ? (0 for nothing)')
+                                        else:
+                                            break
                                     while choix < choice:
                                         if choice == "V" and (choix == "D" or choix == "R" or choix == "A"):
                                             break
@@ -166,7 +172,7 @@ def game_loop(g: PresidentGame):
                                             break
                                         elif choice == "R" and choix == "A":
                                             break
-                                        elif choix == "0" or choix == "10" or choix == "2":
+                                        elif choix == "0" or choix == "2":
                                             break
                                         choix = input('What value do you wish to play ? (0 for nothing)')
 
@@ -230,15 +236,18 @@ def game_loop(g: PresidentGame):
                                             print('Your current deck is : ')
                                             print(g.main_player.hand, )
                                             choix = input('What value do you wish to play ? (0 for nothing)')
-                                            if choix == "V" and (choice == "D" or choice == "R" or choice == "A"):
-                                                choix = input('What value do you wish to play ? (0 for nothing)')
-                                            if choix == "D" and choice == "A":
-                                                choix = input('What value do you wish to play ? (0 for nothing)')
-                                            if choix == "R" and choice == "A":
-                                                choix = input('What value do you wish to play ? (0 for nothing)')
-                                            if choice == "10" and (
-                                                    choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
-                                                choix = input('What value do you wish to play ? (0 for nothing)')
+                                            while choix > choice:
+                                                if choix == "V" and (choice == "D" or choice == "R" or choice == "A"):
+                                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                                elif choix == "D" and choice == "A":
+                                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                                elif choix == "R" and choice == "A":
+                                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                                elif choice == "10" and (
+                                                        choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
+                                                    choix = input('What value do you wish to play ? (0 for nothing)')
+                                                else:
+                                                    break
                                             while choix < choice:
                                                 if choice == "V" and (choix == "D" or choix == "R" or choix == "A"):
                                                     break
@@ -246,7 +255,7 @@ def game_loop(g: PresidentGame):
                                                     break
                                                 elif choice == "R" and choix == "A":
                                                     break
-                                                elif choix == "0" or choix == "10" or choix == "2":
+                                                elif choix == "0" or choix == "2":
                                                     break
                                                 choix = input('What value do you wish to play ? (0 for nothing)')
 
@@ -310,19 +319,23 @@ def game_loop(g: PresidentGame):
                                                     print('Your current deck is : ')
                                                     print(g.main_player.hand, )
                                                     choix = input('What value do you wish to play ? (0 for nothing)')
-                                                    if choix == "V" and (choice == "D" or choice == "R" or choice == "A"):
-                                                        choix = input(
-                                                            'What value do you wish to play ? (0 for nothing)')
-                                                    if choix == "D" and choice == "A":
-                                                        choix = input(
-                                                            'What value do you wish to play ? (0 for nothing)')
-                                                    if choix == "R" and choice == "A":
-                                                        choix = input(
-                                                            'What value do you wish to play ? (0 for nothing)')
-                                                    if choice == "10" and (
-                                                            choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
-                                                        choix = input(
-                                                            'What value do you wish to play ? (0 for nothing)')
+                                                    while choix > choice:
+                                                        if choix == "V" and (
+                                                                choice == "D" or choice == "R" or choice == "A"):
+                                                            choix = input(
+                                                                'What value do you wish to play ? (0 for nothing)')
+                                                        elif choix == "D" and choice == "A":
+                                                            choix = input(
+                                                                'What value do you wish to play ? (0 for nothing)')
+                                                        elif choix == "R" and choice == "A":
+                                                            choix = input(
+                                                                'What value do you wish to play ? (0 for nothing)')
+                                                        elif choice == "10" and (
+                                                                choix == "3" or choix == "4" or choix == "5" or choix == "6" or choix == "7" or choix == "8" or choix == "9"):
+                                                            choix = input(
+                                                                'What value do you wish to play ? (0 for nothing)')
+                                                        else:
+                                                            break
                                                     while choix < choice:
                                                         if choice == "V" and (
                                                                 choix == "D" or choix == "R" or choix == "A"):
@@ -331,9 +344,10 @@ def game_loop(g: PresidentGame):
                                                             break
                                                         elif choice == "R" and choix == "A":
                                                             break
-                                                        elif choix == "0" or choix == "10" or choix == "2":
+                                                        elif choix == "0" or choix == "2":
                                                             break
-                                                        choix = input('What value do you wish to play ? (0 for nothing)')
+                                                        choix = input(
+                                                            'What value do you wish to play ? (0 for nothing)')
 
                                                     if choix == "0":
                                                         plays = g.main_player.play([])
