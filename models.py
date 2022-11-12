@@ -1,3 +1,4 @@
+from tkinter import *
 import random
 import names
 
@@ -248,3 +249,10 @@ class PresidentGame:
     def main_player(self):
         """ Main player is player 0 """
         return self.__players[0]
+
+class Affichage(Tk):
+    def __init__(self):
+        Tk.__init__(self)
+        self.title('Le président')
+        self.geometry("1680x1050")
+        self.configure(bg='green')

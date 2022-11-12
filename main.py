@@ -1,5 +1,4 @@
-import models
-from models import PresidentGame
+from models import PresidentGame, Affichage
 
 
 def print_ln():
@@ -481,6 +480,8 @@ if __name__ == '__main__':
         """        *********************************************
         *** President : The cards game (TM) v.0.1 ***
         ********************************************* """)
+    game = Affichage()
+    game.mainloop()
     g = PresidentGame()
     game_loop(g)
     print('Thank you for playing. I hope you enjoyed !')
