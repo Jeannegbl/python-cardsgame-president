@@ -90,6 +90,8 @@ def game_loop(g: PresidentGame):
                                     break
                                 elif choice == "R" and choix == "A":
                                     break
+                                elif choix == "10" and (choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7" or choice == "8" or choice == "9"):
+                                    break
                                 elif choix == "0" or choix == "2":
                                     break
                                 choix = input('What value do you wish to play ? (0 for nothing)')
@@ -171,6 +173,9 @@ def game_loop(g: PresidentGame):
                                         elif choice == "D" and (choix == "R" or choix == "A"):
                                             break
                                         elif choice == "R" and choix == "A":
+                                            break
+                                        elif choix == "10" and (
+                                                choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7" or choice == "8" or choice == "9"):
                                             break
                                         elif choix == "0" or choix == "2":
                                             break
@@ -254,6 +259,9 @@ def game_loop(g: PresidentGame):
                                                 elif choice == "D" and (choix == "R" or choix == "A"):
                                                     break
                                                 elif choice == "R" and choix == "A":
+                                                    break
+                                                elif choix == "10" and (
+                                                        choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7" or choice == "8" or choice == "9"):
                                                     break
                                                 elif choix == "0" or choix == "2":
                                                     break
@@ -343,6 +351,9 @@ def game_loop(g: PresidentGame):
                                                         elif choice == "D" and (choix == "R" or choix == "A"):
                                                             break
                                                         elif choice == "R" and choix == "A":
+                                                            break
+                                                        elif choix == "10" and (
+                                                                choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7" or choice == "8" or choice == "9"):
                                                             break
                                                         elif choix == "0" or choix == "2":
                                                             break
