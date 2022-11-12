@@ -38,7 +38,7 @@ def game_loop(g: PresidentGame):
 
         tour = 0
         choice = "3"
-        nb_cards = 1
+        nb_cards = 0
         compteur_fini = 0
         stop = 0
         for i in range(len(g.players)):
@@ -93,6 +93,10 @@ def game_loop(g: PresidentGame):
                                 elif choix == "10" and (choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7" or choice == "8" or choice == "9"):
                                     break
                                 elif choix == "0" or choix == "2":
+                                    break
+                                choix = input('What value do you wish to play ? (0 for nothing)')
+                            while g.players[i].has_symbol(choix) != nb_cards:
+                                if nb_cards == 0 or choix == "0":
                                     break
                                 choix = input('What value do you wish to play ? (0 for nothing)')
                             if choix == "0":
@@ -180,7 +184,10 @@ def game_loop(g: PresidentGame):
                                         elif choix == "0" or choix == "2":
                                             break
                                         choix = input('What value do you wish to play ? (0 for nothing)')
-
+                                    while g.players[i].has_symbol(choix) != nb_cards:
+                                        if nb_cards == 0 or choix == "0":
+                                            break
+                                        choix = input('What value do you wish to play ? (0 for nothing)')
                                     if choix == "0":
                                         plays = g.main_player.play([])
                                         tour = tour + 1
@@ -266,7 +273,10 @@ def game_loop(g: PresidentGame):
                                                 elif choix == "0" or choix == "2":
                                                     break
                                                 choix = input('What value do you wish to play ? (0 for nothing)')
-
+                                            while g.players[i].has_symbol(choix) != nb_cards:
+                                                if nb_cards == 0 or choix == "0":
+                                                    break
+                                                choix = input('What value do you wish to play ? (0 for nothing)')
                                             if choix == "0":
                                                 plays = g.main_player.play([])
                                                 tour = tour + 1
@@ -359,7 +369,11 @@ def game_loop(g: PresidentGame):
                                                             break
                                                         choix = input(
                                                             'What value do you wish to play ? (0 for nothing)')
-
+                                                    while g.players[i].has_symbol(choix) != nb_cards:
+                                                        if nb_cards == 0 or choix == "0":
+                                                            break
+                                                        choix = input(
+                                                            'What value do you wish to play ? (0 for nothing)')
                                                     if choix == "0":
                                                         plays = g.main_player.play([])
                                                         tour = tour + 1

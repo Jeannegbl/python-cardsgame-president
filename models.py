@@ -169,6 +169,8 @@ class AIPlayer(Player):
         """
         if choice == "":
             choice = "3"
+        if nb_cards == 0:
+            nb_cards = 1
         best_choice = None
         for index, card in enumerate(self.hand):
             if choice == "3":
