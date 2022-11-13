@@ -93,6 +93,7 @@ class Player:
         self._ordre = 0
         self._finish = 0
         self._role = ""
+        self._score = 0
 
     def add_to_hand(self, card: Card):
         self._hand.append(card)
@@ -102,15 +103,61 @@ class Player:
         for c in cards:
             self._hand.remove(c)
 
+    def remove_give(self, cards):
+        self._hand.remove(cards)
+
+    def remove_give_president(self, cards, card_list: list):
+        if cards == "3":
+            cards = 3
+        elif cards == "4":
+            cards = 4
+        elif cards == "5":
+            cards = 5
+        elif cards == "6":
+            cards = 6
+        elif cards == "7":
+            cards = 7
+        elif cards == "8":
+            cards = 8
+        elif cards == "9":
+            cards = 9
+        elif cards == "10":
+            cards = 10
+        elif cards == "2":
+            cards = 2
+        for c in card_list:
+            if cards == c.value:
+                self._hand.remove(c)
+                return
+
     def give(self, card ,other_player):
         give_card = other_player.add_to_hand(card)
         return give_card
 
-    def give_president(self, cards ,other_player):
-        give_card = other_player.add_to_hand(cards)
-        give = [give_card for card in self._hand if card.symbol ==
-                        cards]
-        return other_player.add_to_hand(give)
+    def give_president(self, cards ,other_player, card_list: list):
+        if cards == "3":
+            cards = 3
+        elif cards == "4":
+            cards = 4
+        elif cards == "5":
+            cards = 5
+        elif cards == "6":
+            cards = 6
+        elif cards == "7":
+            cards = 7
+        elif cards == "8":
+            cards = 8
+        elif cards == "9":
+            cards = 9
+        elif cards == "10":
+            cards = 10
+        elif cards == "2":
+            cards = 2
+        for c in card_list:
+            if cards == c.value:
+                give_card = other_player.add_to_hand(c)
+                return give_card
+
 
     @property
     def start_hand(self):
@@ -219,6 +266,7 @@ class PresidentGame:
         self.__generate_players(nb_players)
         self.generate_cards()
         self.distribute_cards()
+        self.nb_partie = 0
 
     def __generate_players(self, nb_players: int):
         self.__players = [Player()]

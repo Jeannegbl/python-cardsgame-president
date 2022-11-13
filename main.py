@@ -16,7 +16,9 @@ def game_loop(g: PresidentGame):
         g.players[i].ordre = i
         g.players[i].finish = 0
         g.players[i].role = ""
+        g.players[i].score = 0
     last_player = "You"
+    g.nb_partie = 0
 
     wanna_continue = True
     while wanna_continue:
@@ -27,12 +29,19 @@ def game_loop(g: PresidentGame):
                 trouduc = g.players[i]
         for i in range(len(g.players)):
             if g.players[i].role == "Président":
-                #random_card = input("Donner une carte au Trouduc")
-                random_card = g.players[i].hand[0]
-                g.players[i].give(random_card, trouduc)
+                if i == 0:
+                    print(g.players[i].hand)
+                    random_card = input("Donner une carte au Trouduc")
+                    g.players[i].give_president(random_card, trouduc, g.main_player.hand)
+                    g.players[i].remove_give_president(random_card, g.main_player.hand)
+                else:
+                    random_card = g.players[i].hand[0]
+                    g.players[i].give(random_card, trouduc)
+                    g.players[i].remove_give(random_card)
             if g.players[i].role == "Trouduc":
                 last_card = g.players[i].hand[-1]
                 g.players[i].give(last_card, president)
+                g.players[i].remove_give(last_card)
 
 
         tour = 0
@@ -94,7 +103,7 @@ def game_loop(g: PresidentGame):
                                 elif choix == "0" or choix == "2":
                                     break
                                 choix = input('What value do you wish to play ? (0 for nothing)')
-                            while g.players[i].has_symbol(choix) != nb_cards:
+                            while g.players[i].has_symbol(choix) < nb_cards:
                                 if nb_cards == 0 or choix == "0":
                                     break
                                 choix = input('What value do you wish to play ? (0 for nothing)')
@@ -183,7 +192,7 @@ def game_loop(g: PresidentGame):
                                         elif choix == "0" or choix == "2":
                                             break
                                         choix = input('What value do you wish to play ? (0 for nothing)')
-                                    while g.players[i].has_symbol(choix) != nb_cards:
+                                    while g.players[j].has_symbol(choix) < nb_cards:
                                         if nb_cards == 0 or choix == "0":
                                             break
                                         choix = input('What value do you wish to play ? (0 for nothing)')
@@ -272,7 +281,7 @@ def game_loop(g: PresidentGame):
                                                 elif choix == "0" or choix == "2":
                                                     break
                                                 choix = input('What value do you wish to play ? (0 for nothing)')
-                                            while g.players[i].has_symbol(choix) != nb_cards:
+                                            while g.players[k].has_symbol(choix) < nb_cards:
                                                 if nb_cards == 0 or choix == "0":
                                                     break
                                                 choix = input('What value do you wish to play ? (0 for nothing)')
@@ -368,7 +377,7 @@ def game_loop(g: PresidentGame):
                                                             break
                                                         choix = input(
                                                             'What value do you wish to play ? (0 for nothing)')
-                                                    while g.players[i].has_symbol(choix) != nb_cards:
+                                                    while g.players[l].has_symbol(choix) < nb_cards:
                                                         if nb_cards == 0 or choix == "0":
                                                             break
                                                         choix = input(
@@ -423,6 +432,8 @@ def game_loop(g: PresidentGame):
                                 last_player = g.players[j].name
                             if g.players[j].role == "":
                                 g.players[j].role = "Neutre"
+                            if g.players[j].role == "Président":
+                                g.players[j].score = g.players[j].score + 1
                             print(g.players[j].name, ":", g.players[j].role)
                         stop = 1
                         for i in range(len(g.players)):
@@ -442,6 +453,7 @@ def game_loop(g: PresidentGame):
                                 g.players[i - 1].ordre = 3
                         g.generate_cards()
                         g.distribute_cards()
+                        g.nb_partie = g.nb_partie + 1
                         break
 
                 if tour == len(g.players) - 1:
@@ -480,8 +492,9 @@ if __name__ == '__main__':
         """        *********************************************
         *** President : The cards game (TM) v.0.1 ***
         ********************************************* """)
-    game = Affichage()
-    game.mainloop()
     g = PresidentGame()
     game_loop(g)
+    for i in range(len(g.players)):
+        print(g.players[i].name, ":", g.players[i].score, "point(s)")
+    print("Nombre de partie jouer :",g.nb_partie)
     print('Thank you for playing. I hope you enjoyed !')
