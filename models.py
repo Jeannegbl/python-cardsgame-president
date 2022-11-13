@@ -88,8 +88,10 @@ class Card:
 
 class Player:
     def __init__(self, player_name=None):
+        #Pour nous, le nom est You
         self._name: str = player_name if player_name is not None else "You"
         self._hand: list = []
+        #Correspond respectivement à l'ordre pour jouer, un booléen si fini ou no, le nom du role et le score
         self._ordre = 0
         self._finish = 0
         self._role = ""
@@ -103,9 +105,11 @@ class Player:
         for c in cards:
             self._hand.remove(c)
 
+    #Enleve la carte qui est donné lors du trouduc/président
     def remove_give(self, cards):
         self._hand.remove(cards)
 
+    #Enleve la carte qui est donné lorsque nous sommes le président (car il y a un choix)
     def remove_give_president(self, cards, card_list: list):
         if cards == "3":
             cards = 3
@@ -130,10 +134,12 @@ class Player:
                 self._hand.remove(c)
                 return
 
+    #Donne une carte au joueur préciser lors du trouduc/président
     def give(self, card ,other_player):
         give_card = other_player.add_to_hand(card)
         return give_card
 
+    #Donne une carte au joueur préciser lorsque nous sommes le président (car il y a un choix)
     def give_president(self, cards ,other_player, card_list: list):
         if cards == "3":
             cards = 3
@@ -158,7 +164,7 @@ class Player:
                 give_card = other_player.add_to_hand(c)
                 return give_card
 
-
+    #Réinitialise la main à zéro carte lorqu'on rejoue, permet surtout d'enlever les cartes qui reste au trouduc
     @property
     def start_hand(self):
         self._hand = []
@@ -198,7 +204,7 @@ class Player:
 
 
 class AIPlayer(Player):
-
+    #Le init de l'ordinateur à un nom aléatoire
     def __init__(self, player_name=None):
         self._name: str = player_name if player_name is not None else \
             names.get_first_name()
@@ -215,12 +221,15 @@ class AIPlayer(Player):
         Returns: An array of cards to play.
 
         """
+        #"oblige" l'ordi à jouer sa carte la plus faible si nous jouons rien ou si l'ordi commence
         if choice == "":
             choice = "3"
+        # "oblige" l'ordi à jouer une simple si nous ne jouons rien ou si l'ordi commence
         if nb_cards == 0:
             nb_cards = 1
         best_choice = None
         for index, card in enumerate(self.hand):
+            #redéfinition des puissances des cartes du joueur d'avant
             if choice == "3":
                 comparatif = 3
             elif choice == "4":
@@ -256,6 +265,7 @@ class AIPlayer(Player):
                 cards_played = self._hand[index:index + nb_cards]
                 self.card_valeur = card.value
                 best_choice = card.symbol
+                #enleve la carte jouer de l'ordi de sa main
                 self.remove_from_hand(cards_played)
 
         return cards_played if best_choice is not None else []
@@ -265,6 +275,7 @@ class PresidentGame:
     def __init__(self, nb_players: int = 4):
         self.__generate_players(nb_players)
         self.generate_cards()
+        #Fait la distribution des cartes lorsque l'on commence une partie et possède un compteur de nombre de partie jouer
         self.distribute_cards()
         self.nb_partie = 0
 
