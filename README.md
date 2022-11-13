@@ -1,5 +1,6 @@
 # Python Exercice : Le jeu du président
 
+Projet par [Axel](https://github.com/Spyroxa) et [Jeanne](https://github.com/Jeannegbl)
 ## Projet de cours en deuxième année 
 Le président (aussi appelé le troufion) est un jeu de cartes rapide et amusant, au cours duquel la hiérarchie des joueurs changera à chaque manche.<br>
 Le vainqueur d'une manche devient le président, alors que le perdant est proclamé trouduc (ou troufion).
