@@ -22,6 +22,10 @@ def game_loop(g: PresidentGame):
             #Regarde qui possède la dame de coeur
             if card.color() == "♡" and card.symbol == "D":
                 last_player = g.players[i].name
+                if last_player == "You":
+                    print("Vous avez la dame de coeur. Vous commencez la partie.")
+                else:
+                    print(g.players[i].name, "à la dame de coeur. Ce joueur commence la partie.")
                 for i in range(len(g.players)):
                     if last_player == g.players[i].name:
                         after_last_player = i + 1
@@ -69,6 +73,7 @@ def game_loop(g: PresidentGame):
                 last_card = g.players[i].hand[-1]
                 g.players[i].give(last_card, president)
                 g.players[i].remove_give(last_card)
+                print("Le Trouduc commence la partie")
 
         #Le tour correspond au nombre de fois ou personne ne joue, on initilise le choice et nb_cards pour que l'ordi puissent jouer en premier
         tour = 0
