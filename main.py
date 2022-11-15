@@ -15,13 +15,32 @@ def game_loop(g: PresidentGame):
     """
     #On initialise pour la première partie l'ordre dans le sens croissant et on ne met pas de role et un score à zéro
     for i in range(len(g.players)):
-        g.players[i].ordre = i
         g.players[i].finish = 0
         g.players[i].role = ""
         g.players[i].score = 0
+        for card in g.players[i].hand:
+            #Regarde qui possède la dame de coeur
+            if card.color() == "♡" and card.symbol == "D":
+                last_player = g.players[i].name
+                for i in range(len(g.players)):
+                    if last_player == g.players[i].name:
+                        after_last_player = i + 1
+                        after_after_last_player = i + 2
+                        g.players[i].ordre = 0
+                        if i + 1 > 3:
+                            after_last_player = 0
+                        g.players[after_last_player].ordre = 1
+                        if i + 2 == 4:
+                            after_after_last_player = 0
+                        if i + 2 == 5:
+                            after_after_last_player = 1
+                        g.players[after_after_last_player].ordre = 2
+                        g.players[i - 1].ordre = 3
+                break
+
     #On met le nombre de partie à zéro et nous sommes le dernier joueur
-    last_player = "You"
     g.nb_partie = 0
+    plays = 0
 
     wanna_continue = True
     while wanna_continue:

@@ -82,6 +82,10 @@ class Card:
     def symbol(self):
         return self.__symbol
 
+    #Permet de récupérer la couleur de la carte
+    def color(self):
+        return self.__color
+
     def __repr__(self):
         return f"{self.__symbol} {self.__color}"
 

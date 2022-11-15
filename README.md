@@ -20,6 +20,7 @@ Pour le moment pas de possibilité de jouer avec l'interface graphique, il faut 
 Pour jouer une carte, il faut indiquer soit la valeur en chiffre pour les cartes numériques, soit le symbole pour V (Valet), D (Dame), R (Roi), A (As).
 <br>
 Pour passer son tour, que ce soit parce que vous ne pouvez pas ou vous ne voulez pas jouer mettez 0.<br><br>
+Le premier joueur qui commence la première partie, avant attribution des rôles, est celui qui possède la Dame de Coeur<br>
 À la fin de chaque parti, c'est-à-dire quand tout le monde sauf un joueur à utiliser toutes ces cartes, on propose de relancer une autre partie avec l'attribution des rôles suite à la partie d'avant.<br>
 
 * ### Trouduc :
